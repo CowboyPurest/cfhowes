@@ -1,0 +1,30 @@
+An attempt to make web2py work with multiple authentication mechanisms.
+
+Features:
+ * twitter login via OAuth
+ * facebook login via javascript SDK/Graph API
+ * google login via OAuth
+ * web2py standard login
+ * all accounts are joined via email address (so twitter login sends you
+    to a form to enter your email)
+ * only a logged in user should be allowed to add a twitter account to their
+    email address (so twitter email form disallows use of existing email
+    address)
+
+TODO:
+ * make this a real web2py plugin
+
+INSTALL:
+ * site-packages should go to web2py/site-packages.  facebook.py is a modified
+   form of the API provided by facebook, but it uses gluon.tools.fetch for
+   URL fetching so that it will run on GAE (and urllib2 seems to work better
+   than urllib that they were using)
+ * modules to your modules folder.
+ * controlers to your controllers folder
+ * views to your views folder.
+ * add twitter keys to controllers/auth_ext.py
+ * add facebook keys to controllers/auth_ext.py and views/facebook_init.html
+ * configure facebook and twitter applications from their respecitve websites
+ * fix login_area.html to be a full complete HTML page (i use it as an include)
+ * upgrade your database if needed to have the fields of the custom auth_user
+   table
