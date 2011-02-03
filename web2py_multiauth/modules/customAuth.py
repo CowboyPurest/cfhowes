@@ -107,6 +107,8 @@ class CustomAuth(Auth):
                'registration_key': ''}
             keys = dict([(k, v) for (k, v) in keys.items() \
                            if k in table_user.fields])
+            if keys.has_key('id'):
+                del keys['id']
             d.update(keys)
             user_id = table_user.insert(**d)
             if self.settings.create_user_groups:
